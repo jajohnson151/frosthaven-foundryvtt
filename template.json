@@ -1,11 +1,8 @@
 {
   "Actor": {
-    "types": [ "player", "monster", "summoned" ],
+    "types": [ "player", "monster", "ally" ],
     "templates": {
       "common": {
-        "health": {
-          "value": 10
-        },
         "conditions": {
           "regenerate": {
             "value": false
@@ -89,6 +86,7 @@
         },
         "herb-resources": {
           "arrowvine": {
+            "name": "arrowvine",
             "value": 0
           },
           "axenut": {
@@ -118,5 +116,25 @@
         }
       }
     }
+  },
+  "Item": {
+    "types": [ "basicItem" ],
+    "basicItem": {
+      "data": {
+        "type": "basicitem"
+      },
+      "purchasable": true,
+      "craftable": false,
+      "name": "unnamed item",
+      "purchaseCost": 0,
+      "craftingCost": [],
+      "usage": "",
+      "effect": "",
+      "type": "",
+      "negativeModifiers": "",
+      "quantity": 1,
+      "indexNumber": 0
+    }
   }
+
 }

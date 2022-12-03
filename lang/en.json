@@ -1,0 +1,12 @@
+{
+  "frosthaven": {
+    "itemTypes": {
+      "head": "Head",
+      "body": "Body",
+      "feet": "Feet",
+      "oneHand": "One Hand",
+      "twoHands": "Two Hands",
+      "small": "Small"
+    }
+  }
+}

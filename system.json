@@ -15,15 +15,21 @@
     }
   ],
   "scripts": [],
-  "esmodules": [],
-  "styles": [
-    "styles/frosthaven.css"
+  "esmodules": [
+    "module/frosthaven.js"
   ],
+  "styles": [],
   "packs": [],
-  "languages": [],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
   "socket": false,
-  "gridDistance": 5,
-  "gridUnits": "ft",
+  "gridDistance": 1,
+  "gridUnits": "hexes",
   "primaryTokenAttribute": "resources.health",
   "secondaryTokenAttribute": null,
   "url": "https://github.com/jajohnson151/frosthaven-foundryvtt",
