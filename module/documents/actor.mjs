@@ -33,10 +33,10 @@ export class FrosthavenActor extends Actor {
     const data = actorData.system;
     const flags = actorData.flags.frosthaven || {};
 
-    // Make separate methods for each Actor type (character, monster, etc.) to keep
+    // Make separate methods for each Actor type (character, badguy, etc.) to keep
     // things organized.
     this._prepareCharacterData(actorData);
-    this._prepareMonsterData(actorData);
+    this._prepareBadguyData(actorData);
   }
 
   /**
@@ -77,10 +77,10 @@ export class FrosthavenActor extends Actor {
   }
 
   /**
-   * Prepare Monster type specific data.
+   * Prepare Badguy type specific data.
    */
-  _prepareMonsterData(actorData) {
-    if (actorData.type !== 'monster') return;
+  _prepareBadguyData(actorData) {
+    if (actorData.type !== 'badguy') return;
 
     const data = actorData.system;
     data.xp.value = function () {
@@ -101,13 +101,13 @@ export class FrosthavenActor extends Actor {
       return xpValue + Math.max(0, xpSpecialAbilityBonus); // never return a negative special ability bonus
     };
 
-    data.attackBonus.value = this._calculateMonsterAttackBonus();
+    data.attackBonus.value = this._calculateBadguyAttackBonus();
   }
 
   /**
-   * Calculate monster attack bonus
+   * Calculate badguy attack bonus
    */
-  _calculateMonsterAttackBonus() {
+  _calculateBadguyAttackBonus() {
     if (this.system.hitDice.number < 1) {
       return 0;
     } else if (this.system.hitDice.number > 31) {
@@ -149,7 +149,7 @@ export class FrosthavenActor extends Actor {
 
     // Prepare character roll data.
     this._getCharacterRollData(data);
-    this._getMonsterRollData(data);
+    this._getBadguyRollData(data);
     this._getActorRollData(data);
 
     return data;
@@ -178,8 +178,8 @@ export class FrosthavenActor extends Actor {
   /**
    * Prepare NPC roll data.
    */
-  _getMonsterRollData(data) {
-    if (this.system.type !== 'monster') return;
+  _getBadguyRollData(data) {
+    if (this.system.type !== 'badguy') return;
 
     // Process additional NPC data here.
 

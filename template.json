@@ -1,6 +1,6 @@
 {
   "Actor": {
-    "types": ["character", "monster"],
+    "types": ["character", "badguy"],
     "templates": {
       "mybase": {
         "armorClass": {
@@ -14,11 +14,11 @@
           "abbr": "FROSTHAVEN.AttackBonusAbbr"
         },
         "biography": "",
-        "hitPoints": {
+        "health": {
           "value": 10,
           "max": 10,
-          "label": "FROSTHAVEN.HitPoints",
-          "abbr": "FROSTHAVEN.HitPointsAbbr"
+          "label": "FROSTHAVEN.Health",
+          "abbr": "FROSTHAVEN.HealthAbbr"
         },
         "initBonus": {
           "value": 0,
@@ -124,7 +124,7 @@
         "abbr": "FROSTHAVEN.ExperiencePointsAbbr"
       }
     },
-    "monster": {
+    "badguy": {
       "templates": ["mybase"],
       "hitDice": {
         "size": "d8",

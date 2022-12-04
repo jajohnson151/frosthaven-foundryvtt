@@ -95,11 +95,11 @@ Hooks.on("createActor", async function(actor) {
 /* -------------------------------------------- */
 
 Hooks.on("createToken", async function(token, options, id) {
-  if (token.actor.type === "monster") {
-    let newHitPoints = new Roll(`${token.actor.system.hitDice.number}${token.actor.system.hitDice.size}+${token.actor.system.hitDice.mod}`);
-    await newHitPoints.evaluate({ async: true });
-    token.actor.system.hitPoints.value = Math.max(1, newHitPoints.total);
-    token.actor.system.hitPoints.max = Math.max(1, newHitPoints.total);
+  if (token.actor.type === "badguy") {
+    let newHealth = new Roll(`${token.actor.system.hitDice.number}${token.actor.system.hitDice.size}+${token.actor.system.hitDice.mod}`);
+    await newHealth.evaluate({ async: true });
+    token.actor.system.health.value = Math.max(1, newHealth.total);
+    token.actor.system.health.max = Math.max(1, newHealth.total);
   }
 });
 

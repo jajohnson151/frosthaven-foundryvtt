@@ -50,7 +50,7 @@ export class FrosthavenActorSheet extends ActorSheet {
     }
 
     // Prepare NPC data and items.
-    if (actorData.type == 'monster') {
+    if (actorData.type == 'badguy') {
       this._prepareItems(context);
       this._prepareActorData(context);
     }

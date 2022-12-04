@@ -1,6 +1,6 @@
 {
   "ACTOR.TypeCharacter": "Character",
-  "ACTOR.TypeMonster": "Monster",
+  "ACTOR.TypeBadguy": "Badguy",
 
   "ITEM.TypeItem": "Equipment",
   "ITEM.TypeWeapon": "Weapon",
@@ -57,8 +57,8 @@
   "FROSTHAVEN.Formula": "Roll Formula",
   "FROSTHAVEN.HitDice": "Hit Dice",
   "FROSTHAVEN.HitDiceAbbr": "HD",
-  "FROSTHAVEN.HitPoints": "Hit Points",
-  "FROSTHAVEN.HitPointsAbbr": "HP",
+  "FROSTHAVEN.Health": "Health",
+  "FROSTHAVEN.HealthAbbr": "Health",
   "FROSTHAVEN.InitiativeBonus": "Init. Bonus",
   "FROSTHAVEN.Level": "Level",
   "FROSTHAVEN.Melee": "Melee",
