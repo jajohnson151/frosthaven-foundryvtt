@@ -1,140 +1,242 @@
 {
   "Actor": {
-    "types": [ "player", "monster", "ally" ],
+    "types": ["character", "monster"],
     "templates": {
-      "common": {
-        "conditions": {
-          "regenerate": {
-            "value": false
-          },
-          "ward": {
-            "value": false
-          },
-          "invisible": {
-            "value": false
-          },
-          "strengthen": {
-            "value": false
-          },
-          "wound": {
-            "value": false
-          },
-          "brittle": {
-            "value": false
-          },
-          "bane": {
-            "value": false
-          },
-          "poison": {
-            "value": false
-          },
-          "immobilize": {
-            "value": false
-          },
-          "disarm": {
-            "value": false
-          },
-          "impair": {
-            "value": false
-          },
-          "stun": {
-            "value": false
-          },
-          "muddle": {
-            "value": false
-          }
+      "mybase": {
+        "armorClass": {
+          "value": 11,
+          "label": "FROSTHAVEN.ArmorClass",
+          "abbr": "FROSTHAVEN.ArmorClassAbbr"
         },
-        "bonuses": {
-          "shield": {
-            "value": 0
-          },
-          "retaliate": {
-            "value": 0
-          }
-        }
-      },
-      "character": {
-        "templates": [ "common" ],
-        "class": {
-          "value": ""
+        "attackBonus": {
+          "value": 1,
+          "label": "FROSTHAVEN.AttackBonus",
+          "abbr": "FROSTHAVEN.AttackBonusAbbr"
         },
-        "race": {
-          "value": ""
+        "biography": "",
+        "hitPoints": {
+          "value": 10,
+          "max": 10,
+          "label": "FROSTHAVEN.HitPoints",
+          "abbr": "FROSTHAVEN.HitPointsAbbr"
         },
-        "level": {
-          "value": 1
+        "initBonus": {
+          "value": 0,
+          "label": "FROSTHAVEN.InitiativeBonus"
         },
-        "experience": {
-          "value": 0
-        },
-        "gold": {
-          "value": 0
-        },
-        "checkmarks": {
-          "value": 0
-        },
-        "material-resources": {
-          "lumber": {
-            "value": 0
-          },
-          "metal": {
-            "value": 0
-          },
-          "hide": {
-            "value": 0
-          }
-        },
-        "herb-resources": {
-          "arrowvine": {
-            "name": "arrowvine",
-            "value": 0
-          },
-          "axenut": {
-            "value": 0
-          },
-          "corpsecap": {
-            "value": 0
-          },
-          "flamefruit": {
-            "value": 0
-          },
-          "rockroot": {
-            "value": 0
-          },
-          "snowthistle": {
-            "value": 0
-          }
-        }
-      },
-      "monster": {
-        "templates": [ "common" ],
         "move": {
-          "value": 2
+          "value": 30,
+          "label": "FROSTHAVEN.Movement"
         },
-        "damage": {
-          "value": 2
+        "saves": {
+          "death": {
+            "value": 13
+          },
+          "wands": {
+            "value": 14
+          },
+          "paralysis": {
+            "value": 15
+          },
+          "breath": {
+            "value": 16
+          },
+          "spells": {
+            "value": 18
+          }
         }
+      }
+    },
+    "character": {
+      "templates": ["mybase"],
+      "abilities": {
+        "str": {
+          "value": 10
+        },
+        "int": {
+          "value": 10
+        },
+        "wis": {
+          "value": 10
+        },
+        "dex": {
+          "value": 10
+        },
+        "con": {
+          "value": 10
+        },
+        "cha": {
+          "value": 10
+        }
+      },
+      "age": {
+        "value": "",
+        "label": "FROSTHAVEN.Age"
+      },
+      "class": {
+        "value": "",
+        "label": "FROSTHAVEN.Class"
+      },
+      "race": {
+        "value": "",
+        "label": "FROSTHAVEN.Race"
+      },
+      "sex": {
+        "value": "",
+        "label": "FROSTHAVEN.Sex"
+      },
+      "level": {
+        "value": 1,
+        "label": "FROSTHAVEN.Level"
+      },
+      "money": {
+        "pp": {
+          "value": 0
+        },
+        "gp": {
+          "value": 0
+        },
+        "ep": {
+          "value": 0
+        },
+        "sp": {
+          "value": 0
+        },
+        "cp": {
+          "value": 0
+        }
+      },
+      "spellsPerLevel": {
+        "value": {
+          "1": 0,
+          "2": 0,
+          "3": 0,
+          "4": 0,
+          "5": 0,
+          "6": 0
+        },
+        "label": "FROSTHAVEN.SpellsPerLevel"
+      },
+      "xp": {
+        "value": 0,
+        "next": 2000,
+        "label": "FROSTHAVEN.ExperiencePoints",
+        "abbr": "FROSTHAVEN.ExperiencePointsAbbr"
+      }
+    },
+    "monster": {
+      "templates": ["mybase"],
+      "hitDice": {
+        "size": "d8",
+        "number": 1,
+        "mod": 0,
+        "label": "FROSTHAVEN.HitDice",
+        "abbr": "FROSTHAVEN.HitDiceAbbr"
+      },
+      "morale": {
+        "value": 7,
+        "label": "FROSTHAVEN.Morale"
+      },
+      "numberAppearing": {
+        "value": "1d4",
+        "label": "FROSTHAVEN.NumberAppearing"
+      },
+      "specialAbility": {
+        "value": 0,
+        "label": "FROSTHAVEN.SpecialAbility"
+      },
+      "treasureType": {
+        "value": "None",
+        "label": "FROSTHAVEN.TreasureType"
+      },
+      "xp": {
+        "value": 0,
+        "label": "FROSTHAVEN.ExperiencePoints",
+        "abbr": "FROSTHAVEN.ExperiencePointsAbbr"
       }
     }
   },
   "Item": {
-    "types": [ "basicItem" ],
-    "basicItem": {
-      "data": {
-        "type": "basicitem"
+    "types": ["item", "weapon", "armor", "spell", "feature"],
+    "templates": {
+      "mybase": {
+        "description": ""
       },
-      "purchasable": true,
-      "craftable": false,
-      "name": "unnamed item",
-      "purchaseCost": 0,
-      "craftingCost": [],
-      "usage": "",
-      "effect": "",
-      "type": "",
-      "negativeModifiers": "",
-      "quantity": 1,
-      "indexNumber": 0
+      "valuable": {
+        "price": {
+          "value": "",
+          "label": "FROSTHAVEN.Price"
+        },
+        "weight": {
+          "value": 1,
+          "label": "FROSTHAVEN.Weight"
+        }
+      }
+    },
+    "item": {
+      "templates": ["mybase", "valuable"],
+      "quantity": {
+        "value": 1,
+        "label": "FROSTHAVEN.Quantity"
+      }
+    },
+    "weapon": {
+      "templates": ["mybase", "valuable"],
+      "bonusAb": {
+        "value": 0,
+        "label": "FROSTHAVEN.BonusAttackBonus"
+      },
+      "damage": {
+        "value": "1d6",
+        "label": "FROSTHAVEN.Damage",
+        "abbr": "FROSTHAVEN.DamageAbbr"
+      },
+      "range":{
+        "value": "Melee",
+        "label": "FROSTHAVEN.Range"
+      },
+      "size": {
+        "value": "M",
+        "label": "FROSTHAVEN.Size"
+      }
+    },
+    "armor": {
+      "templates": ["mybase", "valuable"],
+      "armorClass": {
+        "value": 11,
+        "label": "FROSTHAVEN.ArmorClass",
+        "abbr": "FROSTHAVEN.ArmorClassAbbr"
+      }
+    },
+    "spell": {
+      "templates": ["mybase"],
+      "class": {
+        "value": "",
+        "label": "FROSTHAVEN.Class"
+      },
+      "duration": {
+        "value": "",
+        "label": "FROSTHAVEN.Duration"
+      },
+      "prepared": {
+        "value": 0,
+        "label": "FROSTHAVEN.Prepared"
+      },
+      "range": {
+        "value": "",
+        "label": "FROSTHAVEN.Range"
+      },
+      "spellLevel": {
+        "value": 1,
+        "label": "FROSTHAVEN.SpellLevel"
+      }
+    },
+    "feature": {
+      "templates": ["mybase"],
+      "formula": {
+        "value": "d100",
+        "label": "FROSTHAVEN.Formula"
+      }
     }
   }
-
 }

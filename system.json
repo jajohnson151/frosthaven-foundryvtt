@@ -14,11 +14,11 @@
       "discord": "Phrenetic Dragon (AJ)#5038"
     }
   ],
-  "scripts": [],
   "esmodules": [
     "module/frosthaven.js"
   ],
-  "styles": [],
+  "styles": ["styles/frosthaven.css"],
+  "scripts": [],
   "packs": [],
   "languages": [
     {
@@ -27,10 +27,9 @@
       "path": "lang/en.json"
     }
   ],
-  "socket": false,
   "gridDistance": 1,
   "gridUnits": "hexes",
-  "primaryTokenAttribute": "resources.health",
+  "primaryTokenAttribute": "hitPoints",
   "secondaryTokenAttribute": null,
   "url": "https://github.com/jajohnson151/frosthaven-foundryvtt",
   "manifest": "[]",
