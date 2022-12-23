@@ -85,5 +85,15 @@
   "FROSTHAVEN.EffectCreate": "Create Effect",
   "FROSTHAVEN.EffectToggle": "Toggle Effect",
   "FROSTHAVEN.EffectEdit": "Edit Effect",
-  "FROSTHAVEN.EffectDelete": "Delete Effect"
+  "FROSTHAVEN.EffectDelete": "Delete Effect",
+
+  "FROSTHAVEN.StatusWounded": "Wounded",
+  "FROSTHAVEN.StatusBane": "Bane",
+  "FROSTHAVEN.StatusImmobilized": "Immobilized",
+  "FROSTHAVEN.StatusDisarm": "Disarmed",
+  "FROSTHAVEN.StatusImpaired": "Impaired",
+  "FROSTHAVEN.StatusMuddled": "Muddled",
+  "FROSTHAVEN.StatusRegenerate": "Regenerate",
+  "FROSTHAVEN.StatusWard": "Ward",
+  "FROSTHAVEN.StatusStrengthen": "Strengthen"
 }

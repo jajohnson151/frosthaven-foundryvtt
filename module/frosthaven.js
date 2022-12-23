@@ -7,12 +7,55 @@ import { FrosthavenItemSheet } from "./sheets/item-sheet.mjs";
 // Import helper/utility classes and constants.
 import { preloadHandlebarsTemplates } from "./helpers/templates.mjs";
 import { FROSTHAVEN } from "./helpers/config.mjs";
+import { MyTokenHUD } from "./helpers/my-token-hud.mjs";
+import { FrosthavenNewMonsterSelect } from "./documents/new-monster-select.mjs"
+
+/**
+ * Define your class that extends FormApplication
+ */
+class MyFormApplication extends FormApplication {
+  constructor(exampleOption) {
+    super();
+    this.exampleOption = exampleOption;
+  }
+
+  static get defaultOptions() {
+    return mergeObject(super.defaultOptions, {
+      classes: ['form'],
+      popOut: true,
+      template: "systems/frosthaven/templates/actor/add-monster-sheet.html",
+      id: 'new-monster-form-application',
+      title: 'Add new monster to map',
+    });
+  }
+
+  getData() {
+    // Send data to the template
+    return {
+      msg: this.exampleOption,
+      color: 'red',
+    };
+  }
+
+  activateListeners(html) {
+    super.activateListeners(html);
+  }
+
+  async _updateObject(event, formData) {
+    console.log(formData.exampleInput);
+  }
+}
+
+
+
+
+
 
 /* -------------------------------------------- */
 /*  Init Hook                                   */
 /* -------------------------------------------- */
 
-Hooks.once('init', async function() {
+Hooks.once('init', async function () {
 
   // Add utility classes to the global game object so that they're more easily
   // accessible in global contexts.
@@ -34,6 +77,75 @@ Hooks.once('init', async function() {
     decimals: 0
   };
 
+  // Define new effects
+  CONFIG.statusEffects = [
+    {
+      id: "dead",
+      label: "EFFECT.StatusDead",
+      icon: "icons/svg/skull.svg"
+    },
+    {
+      id: "wound",
+      label: "FROSTHAVEN.StatusWounded",
+      icon: "systems/frosthaven/module/icons/wound.png"
+    },
+    {
+      id: "bane",
+      label: "FROSTHAVEN.StatusBane",
+      icon: "systems/frosthaven/module/icons/bane.png"
+    },
+    {
+      id: "poison",
+      label: "EFFECT.StatusPoison",
+      icon: "systems/frosthaven/module/icons/poison.png"
+    },
+    {
+      id: "immobilize",
+      label: "FROSTHAVEN.StatusImmobilized",
+      icon: "systems/frosthaven/module/icons/immobilize.png"
+    },
+    {
+      id: "disarm",
+      label: "FROSTHAVEN.StatusDisarm",
+      icon: "systems/frosthaven/module/icons/disarm.png"
+    },
+    {
+      id: "impair",
+      label: "FROSTHAVEN.StatusImpaired",
+      icon: "systems/frosthaven/module/icons/impair.png"
+    },
+    {
+      id: "stun",
+      label: "EFFECT.StatusStunned",
+      icon: "systems/frosthaven/module/icons/stun.png"
+    },
+    {
+      id: "muddle",
+      label: "FROSTHAVEN.StatusMuddled",
+      icon: "systems/frosthaven/module/icons/muddle.png"
+    },
+    {
+      id: "regenerate",
+      label: "FROSTHAVEN.StatusRegenerate",
+      icon: "systems/frosthaven/module/icons/regenerate.png"
+    },
+    {
+      id: "ward",
+      label: "FROSTHAVEN.StatusWard",
+      icon: "systems/frosthaven/module/icons/ward.png"
+    },
+    {
+      id: "invisible",
+      label: "EFFECT.StatusInvisible",
+      icon: "systems/frosthaven/module/icons/invisible.png"
+    },
+    {
+      id: "strengthen",
+      label: "FROSTHAVEN.StatusStrengthen",
+      icon: "systems/frosthaven/module/icons/strengthen.png"
+    }
+  ];
+
   // Define custom Document classes
   CONFIG.Actor.documentClass = FrosthavenActor;
   CONFIG.Item.documentClass = FrosthavenItem;
@@ -41,6 +153,7 @@ Hooks.once('init', async function() {
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
   Actors.registerSheet("frosthaven", FrosthavenActorSheet, { makeDefault: true });
+  Actors.registerSheet("frosthaven", FrosthavenNewMonsterSelect, { makeDefault: false });
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet("frosthaven", FrosthavenItemSheet, { makeDefault: true });
 
@@ -53,7 +166,7 @@ Hooks.once('init', async function() {
 /* -------------------------------------------- */
 
 // If you need to add Handlebars helpers, here are a few useful examples:
-Handlebars.registerHelper('concat', function() {
+Handlebars.registerHelper('concat', function () {
   var outStr = '';
   for (var arg in arguments) {
     if (typeof arguments[arg] != 'object') {
@@ -63,11 +176,11 @@ Handlebars.registerHelper('concat', function() {
   return outStr;
 });
 
-Handlebars.registerHelper('toLowerCase', function(str) {
+Handlebars.registerHelper('toLowerCase', function (str) {
   return str.toLowerCase();
 });
 
-Handlebars.registerHelper('localizeLowerCase', function(str) {
+Handlebars.registerHelper('localizeLowerCase', function (str) {
   return game.i18n.localize(str).toLowerCase();
 });
 
@@ -75,7 +188,7 @@ Handlebars.registerHelper('localizeLowerCase', function(str) {
 /*  Ready Hook                                  */
 /* -------------------------------------------- */
 
-Hooks.once("ready", async function() {
+Hooks.once("ready", async function () {
   // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
   Hooks.on("hotbarDrop", (bar, data, slot) => createItemMacro(data, slot));
 });
@@ -84,7 +197,7 @@ Hooks.once("ready", async function() {
 /*  Character Creation Hooks                    */
 /* -------------------------------------------- */
 
-Hooks.on("createActor", async function(actor) {
+Hooks.on("createActor", async function (actor) {
   if (actor.type === "character") {
     actor.data.token.actorLink = true;
   }
@@ -94,12 +207,22 @@ Hooks.on("createActor", async function(actor) {
 /*  Token Creation Hooks                        */
 /* -------------------------------------------- */
 
-Hooks.on("createToken", async function(token, options, id) {
+Hooks.on("createToken", async function (token, options, id) {
   if (token.actor.type === "badguy") {
     let newHealth = new Roll(`${token.actor.system.hitDice.number}${token.actor.system.hitDice.size}+${token.actor.system.hitDice.mod}`);
     await newHealth.evaluate({ async: true });
     token.actor.system.health.value = Math.max(1, newHealth.total);
     token.actor.system.health.max = Math.max(1, newHealth.total);
+    var retVal = confirm("Do you want to continue ?");
+  }
+  console.log("a new token is being created")
+  //new NewMonsterSelectFormApplication('example').render(true);
+  if (token.actor.type === "monster") {
+    token.displayBars = CONST.TOKEN_DISPLAY_MODES.HOVER;
+    token.displayName = CONST.TOKEN_DISPLAY_MODES.ALWAYS;
+    //token.name = token.actor.name + myCounter;
+    new FrosthavenNewMonsterSelect(token.actor).render(true);
+    console.log("form has completed")
   }
 });
 
@@ -152,3 +275,4 @@ function rollItemMacro(itemName) {
   // Trigger the item roll
   return item.roll();
 }
+

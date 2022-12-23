@@ -1,0 +1,140 @@
+{
+  "Actor": {
+    "types": [ "player", "moster", "ally" ],
+    "templates": {
+      "common": {
+        "conditions": {
+          "regenerate": {
+            "value": false
+          },
+          "ward": {
+            "value": false
+          },
+          "invisible": {
+            "value": false
+          },
+          "strengthen": {
+            "value": false
+          },
+          "wound": {
+            "value": false
+          },
+          "brittle": {
+            "value": false
+          },
+          "bane": {
+            "value": false
+          },
+          "poison": {
+            "value": false
+          },
+          "immobilize": {
+            "value": false
+          },
+          "disarm": {
+            "value": false
+          },
+          "impair": {
+            "value": false
+          },
+          "stun": {
+            "value": false
+          },
+          "muddle": {
+            "value": false
+          }
+        },
+        "bonuses": {
+          "shield": {
+            "value": 0
+          },
+          "retaliate": {
+            "value": 0
+          }
+        }
+      },
+      "character": {
+        "templates": [ "common" ],
+        "class": {
+          "value": ""
+        },
+        "race": {
+          "value": ""
+        },
+        "level": {
+          "value": 1
+        },
+        "experience": {
+          "value": 0
+        },
+        "gold": {
+          "value": 0
+        },
+        "checkmarks": {
+          "value": 0
+        },
+        "material-resources": {
+          "lumber": {
+            "value": 0
+          },
+          "metal": {
+            "value": 0
+          },
+          "hide": {
+            "value": 0
+          }
+        },
+        "herb-resources": {
+          "arrowvine": {
+            "name": "arrowvine",
+            "value": 0
+          },
+          "axenut": {
+            "value": 0
+          },
+          "corpsecap": {
+            "value": 0
+          },
+          "flamefruit": {
+            "value": 0
+          },
+          "rockroot": {
+            "value": 0
+          },
+          "snowthistle": {
+            "value": 0
+          }
+        }
+      },
+      "monster": {
+        "templates": [ "common" ],
+        "move": {
+          "value": 2
+        },
+        "damage": {
+          "value": 2
+        }
+      }
+    }
+  },
+  "Item": {
+    "types": [ "basicItem" ],
+    "basicItem": {
+      "data": {
+        "type": "basicitem"
+      },
+      "purchasable": true,
+      "craftable": false,
+      "name": "unnamed item",
+      "purchaseCost": 0,
+      "craftingCost": [],
+      "usage": "",
+      "effect": "",
+      "type": "",
+      "negativeModifiers": "",
+      "quantity": 1,
+      "indexNumber": 0
+    }
+  }
+
+}

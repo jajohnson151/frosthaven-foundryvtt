@@ -1,17 +1,67 @@
-import {onManageActiveEffect, prepareActiveEffectCategories} from "../helpers/effects.mjs";
+/**
+ * Define your class that extends FormApplication
+ */
+/*
+export class NewMonsterSelectFormApplication extends FormApplication {
+  constructor(exampleOption) {
+    super();
+    this.exampleOption = exampleOption;
+  }
+
+  static get defaultOptions() {
+    console.log("NewMonsterSelectFormApplication:defaultOptions()")
+    const obj = mergeObject(super.defaultOptions, {
+      classes: ['form'],
+      popOut: true,
+      template: 'systems/frosthaven/module/documents/NewMonsterSelectFormApplication.html',
+      id: 'new-monster-select',
+      title: 'New Monster Select',
+    });
+    console.log(obj);
+    return obj;
+  }
+
+  // @override
+  get template() {
+    return `systems/frosthaven/module/documents/NewMonsterSelectFormApplication.html`;
+  }
+
+getData() {
+    // Send data to the template
+    return {
+      msg: this.exampleOption,
+      color: 'red',
+    };
+  }
+
+  activateListeners(html) {
+    super.activateListeners(html);
+  }
+
+  async _updateObject(event, formData) {
+    console.log(formData.exampleInput);
+  }
+}
+
+window.NewMonsterSelectFormApplication = NewMonsterSelectFormApplication;
+//console.log("new-monster-select is here")
+
+*/
+
+import { onManageActiveEffect, prepareActiveEffectCategories } from "../helpers/effects.mjs";
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
  */
-export class FrosthavenActorSheet extends ActorSheet {
+export class FrosthavenNewMonsterSelect extends ActorSheet {
 
   /** @override */
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: ["frosthaven", "sheet", "actor"],
-      template: "systems/frosthaven/templates/actor/actor-sheet.html",
-      width: 600,
+      template: "systems/frosthaven/templates/actor/new-monster-sheet.html",
+      width: 400,
       height: 600,
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "combat" }]
     });
@@ -33,13 +83,13 @@ export class FrosthavenActorSheet extends ActorSheet {
     const context = super.getData();
 
     //enrichedBiography -- enriches system.biography for editor
-    context.enrichedBiography = await TextEditor.enrichHTML(this.object.system.biography, {async: true});
+    context.enrichedBiography = await TextEditor.enrichHTML(this.object.system.biography, { async: true });
 
     // Use a safe clone of the actor data for further operations.
     const actorData = this.actor.toObject(false);
 
-console.log("FrosthavenActorSheet: getData()")
-console.log(actorData)
+    console.log("FrosthavenNewMonsterSelect: getData()")
+    console.log(actorData)
 
     // Add the actor's data to context.data for easier access, as well as flags.
     context.data = actorData.system;
@@ -124,7 +174,7 @@ console.log(actorData)
     // Define an object to store carried weight.
     let carriedWeight = {
       "value": 0,
-      _addWeight (moreWeight, quantity) {
+      _addWeight(moreWeight, quantity) {
         if (!quantity || quantity == '' || Number.isNaN(quantity) || quantity < 0) {
           return; // check we have a valid quantity, and do nothing if we do not
         }
@@ -210,7 +260,7 @@ console.log(actorData)
         const li = $(ev.currentTarget).parents(".item");
         const item = this.actor.items.get(li.data("itemId"));
         let newValue = item.system.prepared.value + parseInt(change);
-        item.update({"system.prepared.value": newValue});
+        item.update({ "system.prepared.value": newValue });
       }
     });
 
@@ -262,7 +312,7 @@ console.log(actorData)
     delete itemData.data["type"];
 
     // Finally, create the item!
-    return await Item.create(itemData, {parent: this.actor});
+    return await Item.create(itemData, { parent: this.actor });
   }
 
   /**

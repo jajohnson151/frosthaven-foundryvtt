@@ -1,6 +1,6 @@
 {
   "Actor": {
-    "types": ["character", "badguy"],
+    "types": ["character", "badguy", "monster"],
     "templates": {
       "mybase": {
         "armorClass": {
@@ -43,6 +43,130 @@
           },
           "spells": {
             "value": 18
+          }
+        }
+      },
+      "conditions": {
+        "conditions": {
+          "regenerate": {
+            "value": false
+          },
+          "ward": {
+            "value": false
+          },
+          "invisible": {
+            "value": false
+          },
+          "strengthen": {
+            "value": false
+          },
+          "wound": {
+            "value": false
+          },
+          "brittle": {
+            "value": false
+          },
+          "bane": {
+            "value": false
+          },
+          "poison": {
+            "value": false
+          },
+          "immobilize": {
+            "value": false
+          },
+          "disarm": {
+            "value": false
+          },
+          "impair": {
+            "value": false
+          },
+          "stun": {
+            "value": false
+          },
+          "muddle": {
+            "value": false
+          }
+        }
+      },
+      "bonuses": {
+        "bonuses": {
+          "shield": {
+            "value": 0
+          },
+          "retaliate": {
+            "value": 0
+          }
+        }
+      },
+      "elementalInfusions": {
+        "elementalInfusions": {
+          "fire": {
+            "value": 0
+          },
+          "ice": {
+            "value": 0
+          },
+          "air": {
+            "value": 0
+          },
+          "earth": {
+            "value": 0
+          },
+          "light": {
+            "value": 0
+          },
+          "dark": {
+            "value": 0
+          }
+        }
+      },
+      "attackEffects": {
+        "attackEffects": {
+          "xAttack": {
+            "value": 0
+          },
+          "pierce": {
+            "value": 0
+          },
+          "xTarget": {
+            "value": 0
+          },
+          "push": {
+            "value": 0
+          },
+          "pull": {
+            "value": 0
+          },
+          "other": {
+            "value": ""
+          },
+          "wound": {
+            "value": false
+          },
+          "brittle": {
+            "value": false
+          },
+          "bane": {
+            "value": false
+          },
+          "poison": {
+            "value": false
+          },
+          "immobilize": {
+            "value": false
+          },
+          "disarm": {
+            "value": false
+          },
+          "impair": {
+            "value": false
+          },
+          "stun": {
+            "value": false
+          },
+          "muddle": {
+            "value": false
           }
         }
       }
@@ -125,7 +249,7 @@
       }
     },
     "badguy": {
-      "templates": ["mybase"],
+      "templates": [ "mybase" ],
       "hitDice": {
         "size": "d8",
         "number": 1,
@@ -154,7 +278,51 @@
         "label": "FROSTHAVEN.ExperiencePoints",
         "abbr": "FROSTHAVEN.ExperiencePointsAbbr"
       }
+    },
+    "monster": {
+      "templates": [ "conditions", "bonuses", "attackEffects" ],
+      "hostility": {
+        "value": "hostile"
+      },
+      "movement": {
+        "value": 2
+      },
+      "attack": {
+        "value": 2
+      },
+      "index": {
+        "value": 1
+      },
+      "type": {
+        "value": "normal"
+      },
+      "persistentBonuses": {
+        "shield": {
+          "value": 0
+        },
+        "retaliate": {
+          "value": 0
+        }
+      },
+      "persistentElementalInfusions": {
+        "templates": [ "persistentElementalInfusions" ]
+      },
+      "persistentConditions": {
+        "regenerate": {
+          "value": false
+        },
+        "ward": {
+          "value": false
+        },
+        "invisible": {
+          "value": false
+        },
+        "strengthen": {
+          "value": false
+        }
+      }
     }
+
   },
   "Item": {
     "types": ["item", "weapon", "armor", "spell", "feature"],
