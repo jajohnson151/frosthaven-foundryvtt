@@ -95,7 +95,8 @@
             "value": 0
           },
           "retaliate": {
-            "value": 0
+            "value": 0,
+            "range": 1
           }
         }
       },
@@ -296,6 +297,11 @@
       "type": {
         "value": "normal"
       },
+      "level": {
+        "value": 1,
+        "label": "FROSTHAVEN.Level"
+      },
+      "originalName": "no-name-yet",
       "persistentBonuses": {
         "shield": {
           "value": 0

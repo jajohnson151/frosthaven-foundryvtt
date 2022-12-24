@@ -153,7 +153,7 @@ Hooks.once('init', async function () {
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
   Actors.registerSheet("frosthaven", FrosthavenActorSheet, { makeDefault: true });
-  Actors.registerSheet("frosthaven", FrosthavenNewMonsterSelect, { makeDefault: false });
+  //Actors.registerSheet("frosthaven", FrosthavenNewMonsterSelect, { makeDefault: false });
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet("frosthaven", FrosthavenItemSheet, { makeDefault: true });
 
@@ -220,9 +220,43 @@ Hooks.on("createToken", async function (token, options, id) {
   if (token.actor.type === "monster") {
     token.displayBars = CONST.TOKEN_DISPLAY_MODES.HOVER;
     token.displayName = CONST.TOKEN_DISPLAY_MODES.ALWAYS;
-    //token.name = token.actor.name + myCounter;
-    new FrosthavenNewMonsterSelect(token.actor).render(true);
-    console.log("form has completed")
+    token.actor.system.originalName = token.actor.name;
+
+    // Inspect all the tokens in the current scene with the same actor name.
+    // Assign the next high (unused) index
+    var count = 0;
+    var maxIndex = -1;
+    var indexList = [];
+    game.scenes.current.tokens.forEach(t => {
+      count = count + 1;
+      console.log(count + " " + t.actor.name);
+      if (token.actor.name === t.actor.system.originalName) {
+        if (maxIndex < t.actor.system.index.value) maxIndex = t.actor.system.index.value;
+        indexList[t.actor.system.index.value] = true;
+      }
+      else {
+        console.log("No match: " + token.actor.name + " vs " + t.actor.name);
+      }
+    }
+    );
+    console.log(indexList);
+    var nextIndex = -1;
+    // Look for the first unused slot
+    for (let i = 1; i <= maxIndex; i++) {
+      if (indexList[i] !== true) {
+        nextIndex = i;
+        break;
+      }
+    }
+    if (nextIndex === -1) {
+      nextIndex = maxIndex + 1;
+    }
+    token.actor.system.index.value = nextIndex;
+    token.name = token.name + " " + nextIndex;
+    token.actor.name = token.name;
+    //const status = new FrosthavenNewMonsterSelect(token.actor).render(true);
+    //console.log("form has completed, status= ");
+    //console.log(status);
   }
 });
 
