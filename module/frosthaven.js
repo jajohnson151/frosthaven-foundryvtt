@@ -146,6 +146,20 @@ Hooks.once('init', async function () {
     }
   ];
 
+  var a;
+  var b;
+  fetch("systems/frosthaven/module/monster-stats.json", {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+    },
+  })
+    .then(response => a = response.json())
+    .then(response =>
+      CONFIG.MonsterStats = JSON.parse(JSON.stringify(response))
+      )
+
+
   // Define custom Document classes
   CONFIG.Actor.documentClass = FrosthavenActor;
   CONFIG.Item.documentClass = FrosthavenItem;
@@ -254,9 +268,9 @@ Hooks.on("createToken", async function (token, options, id) {
     token.actor.system.index.value = nextIndex;
     token.name = token.name + " " + nextIndex;
     token.actor.name = token.name;
-    //const status = new FrosthavenNewMonsterSelect(token.actor).render(true);
-    //console.log("form has completed, status= ");
-    //console.log(status);
+    const status = new FrosthavenNewMonsterSelect(token.actor).render(true);
+    console.log("form has completed, status= ");
+    console.log(status);
   }
 });
 

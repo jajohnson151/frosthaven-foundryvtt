@@ -95,5 +95,24 @@
   "FROSTHAVEN.StatusMuddled": "Muddled",
   "FROSTHAVEN.StatusRegenerate": "Regenerate",
   "FROSTHAVEN.StatusWard": "Ward",
-  "FROSTHAVEN.StatusStrengthen": "Strengthen"
+  "FROSTHAVEN.StatusStrengthen": "Strengthen",
+
+  "FROSTHAVEN.Shield": "Shield",
+  "FROSTHAVEN.Retaliate": "Retaliate",
+
+  "FROSTHAVEN.xAttack": "+X Attack",
+  "FROSTHAVEN.Pierce": "Pierce",
+  "FROSTHAVEN.xTarget": "+X Target",
+  "FROSTHAVEN.Push": "Push",
+  "FROSTHAVEN.Pull": "Pull",
+  "FROSTHAVEN.other": "other",
+  "FROSTHAVEN.Wound": "Wound",
+  "FROSTHAVEN.Brittle": "Brittle",
+  "FROSTHAVEN.Bane": "Bane",
+  "FROSTHAVEN.Poison": "Poison",
+  "FROSTHAVEN.Immobilize": "Immobilize",
+  "FROSTHAVEN.Disarm": "Disarm",
+  "FROSTHAVEN.Impair": "Impair",
+  "FROSTHAVEN.Stun": "Stun",
+  "FROSTHAVEN.Muddle": "Muddle"
 }

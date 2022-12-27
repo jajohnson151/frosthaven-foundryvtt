@@ -54,13 +54,14 @@ import { onManageActiveEffect, prepareActiveEffectCategories } from "../helpers/
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
  */
-export class FrosthavenNewMonsterSelect extends ActorSheet {
+export class FrosthavenNewMonsterSelect extends DocumentSheet {
 
   /** @override */
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: ["frosthaven", "sheet", "actor"],
       template: "systems/frosthaven/templates/actor/new-monster-sheet.html",
+      popOut: true,
       width: 400,
       height: 600,
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "combat" }]

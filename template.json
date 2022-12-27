@@ -90,14 +90,14 @@
         }
       },
       "bonuses": {
-        "bonuses": {
-          "shield": {
-            "value": 0
-          },
-          "retaliate": {
-            "value": 0,
-            "range": 1
-          }
+        "shield": {
+          "value": 0,
+          "label": "FROSTHAVEN.Shield"
+        },
+        "retaliate": {
+          "value": 0,
+          "range": 1,
+          "label": "FROSTHAVEN.Retaliate"
         }
       },
       "elementalInfusions": {
@@ -123,52 +123,65 @@
         }
       },
       "attackEffects": {
-        "attackEffects": {
-          "xAttack": {
-            "value": 0
-          },
-          "pierce": {
-            "value": 0
-          },
-          "xTarget": {
-            "value": 0
-          },
-          "push": {
-            "value": 0
-          },
-          "pull": {
-            "value": 0
-          },
-          "other": {
-            "value": ""
-          },
-          "wound": {
-            "value": false
-          },
-          "brittle": {
-            "value": false
-          },
-          "bane": {
-            "value": false
-          },
-          "poison": {
-            "value": false
-          },
-          "immobilize": {
-            "value": false
-          },
-          "disarm": {
-            "value": false
-          },
-          "impair": {
-            "value": false
-          },
-          "stun": {
-            "value": false
-          },
-          "muddle": {
-            "value": false
-          }
+        "xAttack": {
+          "value": 0,
+          "label": "FROSTHAVEN.xAttack"
+        },
+        "pierce": {
+          "value": 0,
+          "label": "FROSTHAVEN.Pierce"
+        },
+        "xTarget": {
+          "value": 0,
+          "label": "FROSTHAVEN.xTarget"
+        },
+        "push": {
+          "value": 0,
+          "label": "FROSTHAVEN.Push"
+        },
+        "pull": {
+          "value": 0,
+          "label": "FROSTHAVEN.Pull"
+        },
+        "other": {
+          "value": "",
+          "label": "FROSTHAVEN.other"
+        },
+        "wound": {
+          "value": false,
+          "label": "FROSTHAVEN.Wound"
+        },
+        "brittle": {
+          "value": false,
+          "label": "FROSTHAVEN.Brittle"
+        },
+        "bane": {
+          "value": false,
+          "label": "FROSTHAVEN.Bane"
+        },
+        "poison": {
+          "value": false,
+          "label": "FROSTHAVEN.Poison"
+        },
+        "immobilize": {
+          "value": false,
+          "label": "FROSTHAVEN.Immobilize"
+        },
+        "disarm": {
+          "value": false,
+          "label": "FROSTHAVEN.Disarm"
+        },
+        "impair": {
+          "value": false,
+          "label": "FROSTHAVEN.Impair"
+        },
+        "stun": {
+          "value": false,
+          "label": "FROSTHAVEN.Stun"
+        },
+        "muddle": {
+          "value": false,
+          "label": "FROSTHAVEN.Muddle"
         }
       }
     },
